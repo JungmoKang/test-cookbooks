@@ -50,7 +50,10 @@ server {
       break;
     }
   }
-
+  location ~* ^.+robots\.txt$
+  {
+    root   /usr/local/nginx/static-content;
+  }
   location /nginx_status {
     stub_status on;
     access_log off;
