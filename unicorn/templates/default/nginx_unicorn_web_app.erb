@@ -23,7 +23,11 @@ server {
   <% end %>
 
   location / {
-    try_files $uri/index.html $uri/index.htm @unicorn;
+    try_files $uri/index.html $uri/robots.htm @unicorn;
+    SetEnvIf Request_URI "/hello.txt" healthcheck
+    Order Deny,Allow
+    Deny from all
+    Allow from env=healthcheck
   }
 
   location @unicorn {
@@ -49,10 +53,6 @@ server {
       proxy_pass http://unicorn_<%= @application[:domains].first %>;
       break;
     }
-  }
-  location ~* ^.+robots\.txt$
-  {
-    root   /usr/local/nginx/static-content;
   }
   location /nginx_status {
     stub_status on;
