@@ -31,7 +31,6 @@ server {
       auth_basic "<%= node[:nginx][:auth_basic] %>";
       auth_basic_user_file "<%= node[:nginx][:auth_basic_user_file] %>";
     <% end %>
-
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_redirect off;
@@ -56,7 +55,9 @@ server {
     allow 127.0.0.1;
     deny all;
   }
-
+  location = /elb-ping {
+    return 200;
+  }
   error_page 500 502 503 504 /500.html;
   location = /500.html {
     root <%= @application[:absolute_document_root] %>;
