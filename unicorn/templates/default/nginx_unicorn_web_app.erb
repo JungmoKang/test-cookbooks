@@ -24,10 +24,6 @@ server {
 
   location / {
     try_files $uri/index.html $uri/robots.htm @unicorn;
-    SetEnvIf Request_URI "/hello.txt" healthcheck
-    Order Deny,Allow
-    Deny from all
-    Allow from env=healthcheck
   }
 
   location @unicorn {
