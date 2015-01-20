@@ -50,9 +50,6 @@ server {
       break;
     }
   }
-  location /public/ {
-   auth_basic off;
-  }
   location /nginx_status {
     stub_status on;
     access_log off;
