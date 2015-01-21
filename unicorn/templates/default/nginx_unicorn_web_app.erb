@@ -22,7 +22,7 @@ server {
     client_max_body_size <%= @application[:nginx][:client_max_body_size] %>;
   <% end %>
 
-  location /healthcheck.txt {
+  location = /healthcheck.txt {
     try_files /healthcheck.txt =404;
   }
 
@@ -89,7 +89,7 @@ server {
     client_max_body_size <%= @application[:nginx][:client_max_body_size] %>;
   <% end %>
 
-  location /healthcheck.txt {
+  location = /healthcheck.txt {
     try_files /healthcheck.txt =404;
   }
 
