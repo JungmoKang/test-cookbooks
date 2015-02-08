@@ -129,3 +129,13 @@ server {
   }
 }
 <% end %>
+
+server {
+  listen       80;
+  server_name  kagunova.com;
+  set $kagunova_proto "https";
+  if ($http_x_forwarded_proto != "https") {
+    set $kagunova_proto "http";
+  }
+  return       301 $kagunova_proto://www.kagunova.com$request_uri;
+}
