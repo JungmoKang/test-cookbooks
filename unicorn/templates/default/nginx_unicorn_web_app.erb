@@ -5,12 +5,12 @@ upstream unicorn_<%= @application[:domains].first %> {
 server {
     listen 80;
     server_name kagunova.com;
-    return 301 http://www.$host$request_uri;
+    return 301 http://www.kagunova.com$request_uri;
 }
 server {
     listen 443;
     server_name kagunova.com;
-    return 301 https://www.$host$request_uri;
+    return 301 https://www.kagunova.com$request_uri;
 }
 
 server {
