@@ -1,4 +1,4 @@
-upstream unicorn_<%= @application[:domains].first %> {
+upaeam unicorn_<%= @application[:domains].first %> {
  server unix:<%= @application[:deploy_to]%>/shared/sockets/unicorn.sock fail_timeout=0;
 }
 
@@ -25,6 +25,10 @@ server {
 
   location = /healthcheck.txt {
     try_files /healthcheck.txt =404;
+  }
+  
+  location = /lxwsl1on.htm {
+    try_files /lxwsl1on.htm =404;
   }
 
   location / {
